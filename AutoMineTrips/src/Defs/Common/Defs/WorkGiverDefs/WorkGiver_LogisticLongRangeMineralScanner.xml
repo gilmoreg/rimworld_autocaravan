@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <WorkGiverDef>
+	<defName>LogisticLongRangeScan</defName>
+	<label>operate logistic long range scanner</label>
+	<giverClass>WorkGiver_OperateScanner</giverClass>
+	<workType>Research</workType>
+	<priorityInType>50</priorityInType>
+	<verb>scan</verb>
+	<gerund>scanning at</gerund>
+	<scannerDef>LogisticLongRangeMineralScanner</scannerDef>
+	<requiredCapacities>
+	  <li>Manipulation</li>
+	</requiredCapacities>
+  </WorkGiverDef>
+</Defs>

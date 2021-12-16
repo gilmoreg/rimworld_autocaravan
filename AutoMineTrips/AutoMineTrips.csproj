@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="CopyAssembliesToModFolder" AfterTargets="PostBuildEvent">
+	<Copy SourceFiles="$(TargetDir)AutoMineTrips.dll" DestinationFolder="..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AutoMineTrip\Assemblies\" />
+  </Target>
+
+  <Target Name="CopyDefsToModFolder" AfterTargets="CopyAssembliesToModFolder">
+	<ItemGroup>
+	  <DefFiles Include="$(ProjectDir)src\Defs\**\*.*" />
+	</ItemGroup>
+	<Copy SourceFiles="@(DefFiles)" DestinationFolder="..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AutoMineTrip\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>
